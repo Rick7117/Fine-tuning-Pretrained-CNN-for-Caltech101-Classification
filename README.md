@@ -26,32 +26,60 @@ pip install -r requirements.txt
 ```
 
 ### 2. 数据集准备
-1. 从[Caltech-101官网](https://data.caltech.edu/records/mzrjq-6wc02)下载数据集
-2. 解压到项目目录下的`data/`文件夹
-3. 数据集将自动按照标准划分训练集和测试集
-
-### 3. 训练模型
+1. 从e,sh[Caltech-101官网](https://data.caltech.edu/records/mzrjq-6wc02)下载数据集
+2. 解压到项目目录下的`data/`文件夹，此时的文件夹结构为
+```
+Fine-tuning-Pretrained-CNN-for-Caltech101-Classification/
+├── data/
+│   ├── 101_ObjectCategories/  # 原始解压后的数据
+│   │   ├── accordion/
+│   │   ├── airplanes/
+│   │   │   ...
+│   │   └── ...
+```
+3. 将数据集划分训练集和测试集
 ```bash
-python train.py \
-    --model resnet18 \          # 选择模型架构(resnet18或alexnet)
-    --epochs 50 \               # 训练轮数
-    --batch_size 32 \           # 批次大小
-    --lr 0.001 \                # 初始学习率
-    --fine_tune True \          # 是否微调预训练模型
-    --log_dir ./logs            # TensorBoard日志目录
+python utils/split_dataset.py \
+    --original_data_dir data/101_ObjectCategories \
+    --output_data_dir data \
+    --random_seed 42
+```
+此时的文件夹结构为
+```
+Fine-tuning-Pretrained-CNN-for-Caltech101-Classification/
+├── data/
+│   ├── 101_ObjectCategories/  # 原始解压后的数据
+│   │   ├── accordion/
+│   │   ├── airplanes/
+│   │   │   ...
+│   │   └── ...
+│   ├── train/         # 划分后的训练集和验证集
+│   │   ├── accordion/
+│   │   ├── class2/
+│   │   │   ...
+│   │   └── ...
+│   └── val/
+│       ├── accordion/
+│       ├── airplanes/
+│       │   ...
+│       └── ...
+```
+### 3. 训练模型
+训练的参数会从``config.yaml``读取，训练时只需要运行以下命令：
+```bash
+python train.py  
 ```
 
 ### 4. 测试模型
 ```bash
 python test.py \
-    --model resnet18 \          # 模型架构
-    --weights path/to/model.pth # 训练好的模型权重
-    --batch_size 32             # 批次大小
+    --finetuned_model_path models/best_model_weights_finetuned_epochs50_bs32_lr_ft_new0.008_lr_ft_pre0.0002_lr_scratch0.07.pth \
+    --scratch_model_path models/best_model_weights_scratch_epochs50_bs32_lr_ft_new0.0005_lr_ft_pre0.0002_lr_scratch0.0005.pth
 ```
 
 ### 5. 可视化训练过程
 ```bash
-tensorboard --logdir ./logs
+tensorboard --logdir ./runs
 ```
 
 ## 预训练模型下载

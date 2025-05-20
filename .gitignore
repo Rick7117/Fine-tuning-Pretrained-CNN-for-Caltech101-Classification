@@ -1,0 +1,4 @@
+data/
+runs/
+models/*
+!models/resnet.py
