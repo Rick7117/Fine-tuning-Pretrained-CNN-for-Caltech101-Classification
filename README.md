@@ -2,16 +2,19 @@
 Fine-tuning-Pretrained-CNN-for-Caltech101-Classification
 
 ## 项目描述
-本项目使用在ImageNet上预训练的卷积神经网络(CNN)架构(如AlexNet或ResNet-18)，通过微调(fine-tuning)将其应用于Caltech-101数据集的分类任务。项目包含完整的训练流程、超参数实验以及与从零开始训练的对比实验。
+本项目使用在ImageNet上预训练的卷积神经网络(CNN)架构(ResNet-18)，通过微调(fine-tuning)将其应用于Caltech-101数据集的分类任务。项目包含完整的训练流程、超参数实验以及与从零开始训练的对比实验。
 
 ## 项目结构
 ```
 Fine-tuning-Pretrained-CNN-for-Caltech101-Classification/
+├── conf/                    # 配置文件
 ├── data/                    # 数据集目录(需自行下载)
 ├── models/                  # 模型定义代码
+├── runs/                    # TensorBoard日志目录
 ├── utils/                   # 工具函数
 ├── train.py                 # 训练脚本
 ├── test.py                  # 测试脚本
+├── Report.pdf               # 实验报告
 ├── requirements.txt         # 依赖库
 └── README.md                # 项目说明文件
 ```
