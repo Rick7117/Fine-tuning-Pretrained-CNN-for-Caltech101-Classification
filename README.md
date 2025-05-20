@@ -96,7 +96,7 @@ tensorboard --logdir ./runs
 4. 微调模型与从零训练模型的性能对比
 5. 结论与分析
 
-报告链接：[实验报告PDF](https://drive.google.com/file/d/[your-file-id]/view)
+报告链接：[实验报告PDF](https://github.com/Rick7117/Fine-tuning-Pretrained-CNN-for-Caltech101-Classification/blob/main/Report.pdf)
 
 ## 贡献
 欢迎提交issue或pull request。对于重大更改，请先开issue讨论您想做的更改。
