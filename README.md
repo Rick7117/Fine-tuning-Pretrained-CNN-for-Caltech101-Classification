@@ -26,7 +26,7 @@ pip install -r requirements.txt
 ```
 
 ### 2. 数据集准备
-1. 从e,sh[Caltech-101官网](https://data.caltech.edu/records/mzrjq-6wc02)下载数据集
+1. 从[Caltech-101官网](https://data.caltech.edu/records/mzrjq-6wc02)下载数据集
 2. 解压到项目目录下的`data/`文件夹，此时的文件夹结构为
 ```
 Fine-tuning-Pretrained-CNN-for-Caltech101-Classification/
@@ -65,7 +65,7 @@ Fine-tuning-Pretrained-CNN-for-Caltech101-Classification/
 │       └── ...
 ```
 ### 3. 训练模型
-训练的参数会从``config.yaml``读取，训练时只需要运行以下命令：
+训练的参数会从``conf/config.yaml``读取，训练时只需要运行以下命令：
 ```bash
 python train.py  
 ```
@@ -73,8 +73,8 @@ python train.py
 ### 4. 测试模型
 ```bash
 python test.py \
-    --finetuned_model_path models/best_model_weights_finetuned_epochs50_bs32_lr_ft_new0.008_lr_ft_pre0.0002_lr_scratch0.07.pth \
-    --scratch_model_path models/best_model_weights_scratch_epochs50_bs32_lr_ft_new0.0005_lr_ft_pre0.0002_lr_scratch0.0005.pth
+    --finetuned_model_path models/best_model_weights_finetuned_epochs50_bs32_lr_ft_new0.05_lr_ft_pre0.0007.pth \
+    --scratch_model_path models/best_model_weights_scratch_epochs50_bs32_lr_scratch0.02.pth
 ```
 
 ### 5. 可视化训练过程
@@ -83,7 +83,7 @@ tensorboard --logdir ./runs
 ```
 
 ## 预训练模型下载
-训练好的模型权重已上传至[Google Drive](https://drive.google.com/drive/folders/[your-folder-id])。
+训练好的模型权重已上传至[Google Drive](https://drive.google.com/file/d/1ExSypLVLWOiR5P8a57yBIaE-Qk2hjCII/view?usp=share_link)。
 
 ## 实验报告
 实验报告PDF包含以下内容：

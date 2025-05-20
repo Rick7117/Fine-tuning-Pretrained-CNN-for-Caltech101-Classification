@@ -97,7 +97,7 @@ def train_model(model, criterion, optimizer, scheduler, num_epochs, model_type='
     # Save best model weights
     # Save best model weights with hyperparameters in filename
     if model_type == 'scratch':
-        model_save_path = f"models/best_model_weights_{model_type}_epochs{num_epochs}_bs{config['training']['batch_size']}_lr_scratch{config['optimizer']['scratch']['lr']}"
+        model_save_path = f"models/best_model_weights_{model_type}_epochs{num_epochs}_bs{config['training']['batch_size']}_lr_scratch{config['optimizer']['scratch']['lr']}.pth"
     else:
         model_save_path = f"models/best_model_weights_{model_type}_epochs{num_epochs}_bs{config['training']['batch_size']}_lr_ft_new{config['optimizer']['finetune']['lr_new_layers']}_lr_ft_pre{config['optimizer']['finetune']['lr_pretrained_layers']}.pth"
     torch.save(model.state_dict(), model_save_path)
